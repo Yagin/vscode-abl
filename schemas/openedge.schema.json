@@ -29,6 +29,11 @@
         "id": "/properties/proPathMode",
         "title": "proPathMode",
         "type": "string"
+      },
+      "dlc": {
+        "description": "DLC path",
+        "type": "string",
+        "id": "/properties/dlc"
       }
     },
     "type": "object"

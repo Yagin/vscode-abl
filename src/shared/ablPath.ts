@@ -4,7 +4,12 @@ import { OpenEdgeConfig } from './openEdgeConfigFile';
 import * as fs from 'fs';
 
 export function getBinPath(toolName: string) {
-    return path.join(process.env['DLC'], 'bin', toolName);
+    let dlc = process.env['VSABL_DLC'];
+    if (!dlc)
+        dlc = process.env['DLC'];
+    // currently, if DLC is empty string, syntax will show OK,
+    // due to missing error handling in ablCheckSyntax.CheckSyntax
+    return path.join(dlc, 'bin', toolName);
 }
 
 export function getProBin() {
@@ -69,6 +74,10 @@ export function setupEnvironmentVariables(env: any, openEdgeConfig: OpenEdgeConf
             env.VSABL_PROPATH_MODE = openEdgeConfig.proPathMode;
         } else  {
             env.VSABL_PROPATH_MODE = 'append';
+        }
+
+        if (openEdgeConfig.dlc) {
+            env.VSABL_DLC = openEdgeConfig.dlc;
         }
     }
     env.VSABL_SRC = path.join(__dirname, '../abl-src');

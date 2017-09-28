@@ -11,6 +11,7 @@ export interface OpenEdgeConfig {
     proPathMode?: 'append' | 'overwrite' | 'prepend';
     parameterFiles?: string[];
     ablUnit?: {};
+    dlc?: string;
 }
 
 export function loadConfigFile(filename: string): Thenable<OpenEdgeConfig> {
