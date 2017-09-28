@@ -6,11 +6,11 @@ DEFINE VARIABLE i       AS INTEGER   NO-UNDO.
 ASSIGN ch_prog = ENTRY( 1, SESSION:PARAMETER ).
 
 RUN VALUE( REPLACE( PROGRAM-NAME( 1 ), "check-syntax.p", "read-env-var.p") ).
-
+/*
 // TODO
 // RUN pre-launch-task.p
 // mais quid des param...
-
+*/
 /* Compile without saving */
 COMPILE VALUE( ch_prog ) SAVE=NO NO-ERROR.
 
